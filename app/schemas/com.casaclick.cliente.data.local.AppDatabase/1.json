@@ -1,0 +1,432 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "8fec7b14f756b7a2f9b88fb5d81b350b",
+    "entities": [
+      {
+        "tableName": "usuarios",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `correo` TEXT NOT NULL, `nombre` TEXT NOT NULL, `rol` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "correo",
+            "columnName": "correo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rol",
+            "columnName": "rol",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "propiedades",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `idRemoto` INTEGER, `uuid` TEXT NOT NULL, `version` INTEGER NOT NULL, `estadoSync` TEXT NOT NULL, `titulo` TEXT NOT NULL, `distrito` TEXT NOT NULL, `tipoOperacion` TEXT NOT NULL, `precio` REAL NOT NULL, `habitaciones` INTEGER NOT NULL, `areaM2` REAL NOT NULL, `descripcion` TEXT NOT NULL, `imagenesJson` TEXT NOT NULL, `eliminado` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idRemoto",
+            "columnName": "idRemoto",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "uuid",
+            "columnName": "uuid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estadoSync",
+            "columnName": "estadoSync",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "titulo",
+            "columnName": "titulo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "distrito",
+            "columnName": "distrito",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tipoOperacion",
+            "columnName": "tipoOperacion",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "precio",
+            "columnName": "precio",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "habitaciones",
+            "columnName": "habitaciones",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "areaM2",
+            "columnName": "areaM2",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descripcion",
+            "columnName": "descripcion",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imagenesJson",
+            "columnName": "imagenesJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "eliminado",
+            "columnName": "eliminado",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_propiedades_uuid",
+            "unique": true,
+            "columnNames": [
+              "uuid"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_propiedades_uuid` ON `${TABLE_NAME}` (`uuid`)"
+          },
+          {
+            "name": "index_propiedades_idRemoto",
+            "unique": true,
+            "columnNames": [
+              "idRemoto"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_propiedades_idRemoto` ON `${TABLE_NAME}` (`idRemoto`)"
+          }
+        ]
+      },
+      {
+        "tableName": "visitas",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `idRemoto` INTEGER, `uuid` TEXT NOT NULL, `version` INTEGER NOT NULL, `estadoSync` TEXT NOT NULL, `propiedadId` INTEGER NOT NULL, `propiedadIdRemoto` INTEGER NOT NULL, `usuarioId` INTEGER NOT NULL, `fecha` TEXT NOT NULL, `hora` TEXT NOT NULL, `estado` TEXT NOT NULL, `clienteNombre` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idRemoto",
+            "columnName": "idRemoto",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "uuid",
+            "columnName": "uuid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estadoSync",
+            "columnName": "estadoSync",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "propiedadId",
+            "columnName": "propiedadId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "propiedadIdRemoto",
+            "columnName": "propiedadIdRemoto",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "usuarioId",
+            "columnName": "usuarioId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fecha",
+            "columnName": "fecha",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hora",
+            "columnName": "hora",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estado",
+            "columnName": "estado",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "clienteNombre",
+            "columnName": "clienteNombre",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_visitas_uuid",
+            "unique": true,
+            "columnNames": [
+              "uuid"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_visitas_uuid` ON `${TABLE_NAME}` (`uuid`)"
+          },
+          {
+            "name": "index_visitas_idRemoto",
+            "unique": true,
+            "columnNames": [
+              "idRemoto"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_visitas_idRemoto` ON `${TABLE_NAME}` (`idRemoto`)"
+          }
+        ]
+      },
+      {
+        "tableName": "favoritos",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `propiedadId` INTEGER NOT NULL, `usuarioId` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "propiedadId",
+            "columnName": "propiedadId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "usuarioId",
+            "columnName": "usuarioId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_favoritos_propiedadId_usuarioId",
+            "unique": true,
+            "columnNames": [
+              "propiedadId",
+              "usuarioId"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_favoritos_propiedadId_usuarioId` ON `${TABLE_NAME}` (`propiedadId`, `usuarioId`)"
+          }
+        ]
+      },
+      {
+        "tableName": "operaciones_pendientes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `uuidOperacion` TEXT NOT NULL, `entidad` TEXT NOT NULL, `idEntidadLocal` INTEGER NOT NULL, `tipoOperacion` TEXT NOT NULL, `payload` TEXT NOT NULL, `fechaRegistro` INTEGER NOT NULL, `estado` TEXT NOT NULL, `intentos` INTEGER NOT NULL, `mensajeError` TEXT, `codigoHttp` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uuidOperacion",
+            "columnName": "uuidOperacion",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entidad",
+            "columnName": "entidad",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idEntidadLocal",
+            "columnName": "idEntidadLocal",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tipoOperacion",
+            "columnName": "tipoOperacion",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "payload",
+            "columnName": "payload",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fechaRegistro",
+            "columnName": "fechaRegistro",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estado",
+            "columnName": "estado",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "intentos",
+            "columnName": "intentos",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mensajeError",
+            "columnName": "mensajeError",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "codigoHttp",
+            "columnName": "codigoHttp",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_operaciones_pendientes_uuidOperacion",
+            "unique": true,
+            "columnNames": [
+              "uuidOperacion"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_operaciones_pendientes_uuidOperacion` ON `${TABLE_NAME}` (`uuidOperacion`)"
+          }
+        ]
+      },
+      {
+        "tableName": "sync_metadata",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recurso` TEXT NOT NULL, `ultimaSincronizacionExitosa` INTEGER NOT NULL, `cursorRemoto` TEXT NOT NULL, `mensaje` TEXT NOT NULL, PRIMARY KEY(`recurso`))",
+        "fields": [
+          {
+            "fieldPath": "recurso",
+            "columnName": "recurso",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ultimaSincronizacionExitosa",
+            "columnName": "ultimaSincronizacionExitosa",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cursorRemoto",
+            "columnName": "cursorRemoto",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mensaje",
+            "columnName": "mensaje",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "recurso"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8fec7b14f756b7a2f9b88fb5d81b350b')"
+    ]
+  }
+}
